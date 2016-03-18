@@ -1,22 +1,23 @@
 package electronscala
 
-import electron.BrowserWindow
+import electron._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.Dynamic.{literal => JsObject}
 
 @JSExport("electronscala.App")
-class App(dirName: String)(implicit electron: js.Dynamic) {
+class App(dirName: String)(implicit electron: Electron) {
   lazy val process = js.Dynamic.global.process
 
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
-  var mainWindow: Option[js.Dynamic] = None
+  var mainWindow: Option[BrowserWindow] = None
 
   def createWindow(): Unit = {
     println("Attempted to open a window.")
     // Create the browser window.
-    mainWindow = Some(BrowserWindow(js.Dynamic.literal(width = 800, height = 600)))
+    mainWindow = Some(BrowserWindow(JsObject(width = 800, height = 600)))
     mainWindow foreach { window =>
       // and load the index.html of the app.
       window.loadURL("file://" + dirName + "/index.html")
