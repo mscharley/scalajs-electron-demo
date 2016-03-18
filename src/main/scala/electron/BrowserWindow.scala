@@ -1,5 +1,7 @@
 package electron
 
+import nodejs.EventEmitter
+
 import scala.scalajs.js
 
 object BrowserWindow {
@@ -8,7 +10,7 @@ object BrowserWindow {
 }
 
 @js.native
-abstract class BrowserWindow extends js.Object with Observable {
+abstract class BrowserWindow extends js.Object with EventEmitter {
   def loadURL(url: String): Unit = js.native
   val webContents: js.Dynamic = js.native
 }
