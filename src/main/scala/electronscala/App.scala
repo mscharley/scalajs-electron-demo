@@ -1,10 +1,11 @@
+package electronscala
+
 import electron.BrowserWindow
 
 import scala.scalajs.js
-import scala.scalajs.js.Any
 import scala.scalajs.js.annotation.JSExport
 
-@JSExport
+@JSExport("electronscala.App")
 class App(dirName: String)(implicit electron: js.Dynamic) {
   lazy val process = js.Dynamic.global.process
 
@@ -27,7 +28,7 @@ class App(dirName: String)(implicit electron: js.Dynamic) {
       // Dereference the window object, usually you would store windows
       // in an array if your app supports multi windows, this is the time
       // when you should delete the corresponding element.
-      window.on("closed", Any.fromFunction0(() => mainWindow = None));
+      window.on("closed", () => mainWindow = None);
     }
   }
 
