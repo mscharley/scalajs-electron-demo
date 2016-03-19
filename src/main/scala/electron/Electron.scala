@@ -2,8 +2,7 @@ package electron
 
 import scala.scalajs.js
 
-@js.native
-abstract class Electron extends js.Object {
-  val app: Application = js.native
-  val BrowserWindow: js.Dynamic = js.native
+class Electron private[electron](electron: raw.Electron) {
+  val app: Application = new Application(electron.app)
+  val BrowserWindow: js.Dynamic = electron.BrowserWindow
 }

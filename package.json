@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "sbt fullOptJS && electron target/scala-2.11/classes/entry.js",
+    "debug": "sbt clean fastOptJS && electron target/scala-2.11/classes/entry.js",
     "test": "sbt test"
   },
   "repository": {
