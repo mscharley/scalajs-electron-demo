@@ -45,7 +45,7 @@ class App(dirName: String)(implicit electron: Electron) {
     // Quit when all windows are closed.
     app.on("window-all-closed", () => process.platform.asInstanceOf[String] match {
       // On OS X it is common for applications and their menu bar
-      // to stay active until the user quits explicitly with Cmd + Q
+      // to stay active until the user quits explicitly with Cmd + Q.
       case "darwin" =>
       // For everyone else, we just die immediately.
       case _ =>
