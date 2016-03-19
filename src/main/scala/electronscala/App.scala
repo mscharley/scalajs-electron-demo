@@ -14,7 +14,7 @@ class App(dirName: String)(implicit electron: Electron) {
   // be closed automatically when the JavaScript object is garbage collected.
   var mainWindow: Option[BrowserWindow] = None
 
-  def createWindow(): Unit = {
+  val createWindow = () => {
     // Create the browser window.
     mainWindow = Some(BrowserWindow(JsObject(width = 800, height = 600)))
     mainWindow foreach { window =>
@@ -37,28 +37,23 @@ class App(dirName: String)(implicit electron: Electron) {
     // Module to control application life.
     val app = electron.app
 
-    // This method will be called when Electron has finished
-    // initialization and is ready to create browser windows.
-    app.on("ready", () => createWindow())
+    // This method will be called when Electron has finished initialization and is ready to create browser windows.
+    app.on("ready", createWindow)
 
-    // Quit when all windows are closed.
-    app.on("window-all-closed", () => process.platform.asInstanceOf[String] match {
-      // On OS X it is common for applications and their menu bar
-      // to stay active until the user quits explicitly with Cmd + Q.
+    process.platform.asInstanceOf[String] match {
       case "darwin" =>
-      // For everyone else, we just die immediately.
+        // On OS X it is common for applications and their menu bar to stay active until the user quits explicitly
+        // with Cmd + Q and re-create a window in the app when the dock icon is clicked and there are no other
+        // windows open.
+        app.on("activate", () => {
+          if (mainWindow.isEmpty) {
+            createWindow()
+          }
+        })
+
       case _ =>
-        app.quit()
-    })
-
-    app.on("activate", () => mainWindow match {
-      case None =>
-        // On OS X it's common to re-create a window in the app when the
-        // dock icon is clicked and there are no other windows open.
-        createWindow()
-
-      case Some(_) =>
-    })
-
+        // For everyone else, we just die immediately.
+        app.on("window-all-closed", () => app.quit())
+    }
   }
 }
