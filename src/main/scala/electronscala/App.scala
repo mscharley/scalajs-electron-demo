@@ -15,7 +15,6 @@ class App(dirName: String)(implicit electron: Electron) {
   var mainWindow: Option[BrowserWindow] = None
 
   def createWindow(): Unit = {
-    println("Attempted to open a window.")
     // Create the browser window.
     mainWindow = Some(BrowserWindow(JsObject(width = 800, height = 600)))
     mainWindow foreach { window =>
