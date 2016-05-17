@@ -1,5 +1,5 @@
 {
-  "name": "electron-scala",
+  "name": "scalajs-electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application with Scala.js support",
   "main": "main.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mscharley/electron-scala.git"
+    "url": "git+https://github.com/mscharley/scalajs-electron-quick-start.git"
   },
   "keywords": [
     "Electron",
@@ -20,11 +20,11 @@
   "author": "Matthew Scharley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mscharley/electron-scala/issues"
+    "url": "https://github.com/mscharley/scalajs-electron-quick-start/issues"
   },
-  "homepage": "https://github.com/mscharley/electron-scala#readme",
+  "homepage": "https://github.com/mscharley/scalajs-electron-quick-start#readme",
   "devDependencies": {
-    "electron-prebuilt": "0.37.2",
+    "electron-prebuilt": "^1.0.1",
     "source-map-support": "^0.4.0"
   }
 }
