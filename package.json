@@ -2,7 +2,6 @@
   "name": "scalajs-electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application with Scala.js support",
-  "main": "main.js",
   "scripts": {
     "start": "sbt fullOptJS && electron target/scala-2.11/classes/entry.js",
     "debug": "sbt clean fastOptJS && electron target/scala-2.11/classes/entry.js",
