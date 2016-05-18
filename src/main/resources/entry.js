@@ -2,7 +2,7 @@
 
 require('source-map-support').install();
 (function() {
-    var appName = 'electron-scala';
+    var appName = 'scalajs-electron-quick-start';
     try {
         require('../' + appName + '-opt');
     }
@@ -10,6 +10,6 @@ require('source-map-support').install();
         require('../' + appName + '-fastopt');
     }
 
-    console.log("Starting electron-scala...");
-    electronscala.App(__dirname, require('electron')).main();
+    console.log("Starting scalajs-electron-quick-start...");
+    ElectronQuickStart.App(__dirname, require('electron')).main();
 })();
