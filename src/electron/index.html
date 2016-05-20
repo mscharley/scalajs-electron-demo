@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <script>
+    (function() {
+      require('source-map-support').install();
+
+      var appName = 'scalajs-electron-quick-start';
+      try {
+        require('./' + appName + '-opt');
+      }
+      catch (e) {
+        require('./' + appName + '-fastopt');
+      }
+
+      window.onload = function() {
+        ElectronQuickStart.Window();
+      }
+    })();
+    </script>
   </head>
   <body>
     <h1>Hello World!</h1>
@@ -11,9 +28,4 @@
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
   </body>
-
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
 </html>
