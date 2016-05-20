@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/mscharley/scalajs-electron-quick-start#readme",
   "devDependencies": {
-    "electron-prebuilt": "^1.0.1",
+    "electron-prebuilt": "^1.1.1",
     "source-map-support": "^0.4.0"
   }
 }
