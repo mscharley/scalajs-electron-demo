@@ -1,2 +1,4 @@
 node_modules
 target
+/tags
+/src/electron/scalajs-electron-quick-start*

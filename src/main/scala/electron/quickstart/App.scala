@@ -1,15 +1,17 @@
-package electronscala
+package electron.quickstart
 
 import electron._
 
-import scala.scalajs.js.Dynamic.{literal => JsObject}
+import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{global, literal => JsObject}
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport("ElectronQuickStart.App")
-class App(dirName: String, rawElectron: raw.Electron) extends ElectronApp(rawElectron) {
+class App(dirName: String, require: js.Function1[String, js.Any]) extends ElectronApp(require("electron").asInstanceOf[raw.Electron]) {
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
   var mainWindow: Option[BrowserWindow] = None
+  val console = global.console
 
   val createWindow = () => {
     // Create the browser window.
@@ -30,6 +32,8 @@ class App(dirName: String, rawElectron: raw.Electron) extends ElectronApp(rawEle
   }
 
   def main() = {
+    console.log("Starting scalajs-electron-quick-start...");
+
     // This method will be called when Electron has finished initialization and is ready to create browser windows.
     electronApp onceReady createWindow
 

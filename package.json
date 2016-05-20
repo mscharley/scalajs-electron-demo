@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A minimal Electron application with Scala.js support",
   "scripts": {
-    "start": "sbt fullOptJS && electron target/scala-2.11/classes/entry.js",
-    "debug": "sbt clean fastOptJS && electron target/scala-2.11/classes/entry.js",
+    "start": "rm -fv src/electron/${npm_package_name}* && sbt fullOptJS && cp -v target/scala-*/${npm_package_name}* src/electron/ && electron src/electron/entry.js",
+    "debug": "rm -fv src/electron/${npm_package_name}* && sbt clean fastOptJS && cp -v target/scala-*/${npm_package_name}* src/electron/ && electron src/electron/entry.js",
     "test": "sbt test"
   },
   "repository": {
