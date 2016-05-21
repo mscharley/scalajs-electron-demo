@@ -15,7 +15,7 @@ class App(dirName: String, require: js.Function1[String, js.Any]) extends Electr
   var mainWindow: Option[BrowserWindow] = None
   val console = global.console
 
-  val createWindow = () => {
+  def createWindow() = {
     // Create the browser window.
     mainWindow = Some(BrowserWindow(JsObject(width = 800, height = 600)))
     mainWindow foreach { window =>
