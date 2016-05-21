@@ -1,5 +1,5 @@
 {
-  "name": "scalajs-electron-quick-start",
+  "name": "scalajs-electron-demo",
   "version": "1.0.0",
   "description": "A minimal Electron application with Scala.js support",
   "scripts": {
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/mscharley/scalajs-electron-quick-start#readme",
   "devDependencies": {
     "electron-prebuilt": "^1.1.1",
+    "jquery": "^2.0",
     "source-map-support": "^0.4.0"
   }
 }

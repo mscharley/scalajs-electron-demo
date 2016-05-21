@@ -6,11 +6,11 @@ scalaJSUseRhino in Global := false
 
 lazy val ElectronQuickStart = (project in file(".")).
   settings(
-    name := "scalajs-electron-quick-start",
+    name := "scalajs-electron-demo",
     version := "1.0.0",
     scalaVersion := "2.11.8",
 
-    mainClass in Compile := Some("ElectronQuickStart.App"),
+    mainClass in Compile := Some("Demo.App"),
     persistLauncher in Compile := true,
     persistLauncher in Test := false,
     artifactPath in (Compile, fastOptJS) :=
@@ -40,6 +40,8 @@ ${mainCl}(__dirname, require).main();
     resolvers += Resolver.sonatypeRepo("public"),
     libraryDependencies ++= Seq(
       "org.scala-js"  %%% "scalajs-dom"      % "0.9.0",
+      "be.doeraene"   %%% "scalajs-jquery"   % "0.9.0",
+      "com.lihaoyi"   %%% "autowire"         % "0.2.5",
       "com.mscharley" %%% "scalajs-electron" % "0.1.1",
       "com.mscharley" %%% "scalajs-nodejs"   % "0.1.0"
     )

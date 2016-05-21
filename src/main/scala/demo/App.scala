@@ -1,4 +1,4 @@
-package electron.quickstart
+package demo
 
 import electron._
 
@@ -6,7 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{global, literal => JsObject}
 import scala.scalajs.js.annotation.JSExport
 
-@JSExport("ElectronQuickStart.App")
+@JSExport("Demo.App")
 class App(dirName: String, require: js.Function1[String, js.Any]) extends ElectronApp(require) with js.JSApp {
   require("source-map-support").asInstanceOf[js.Dynamic].install();
 
@@ -34,10 +34,10 @@ class App(dirName: String, require: js.Function1[String, js.Any]) extends Electr
   }
 
   def main() = {
-    console.log("Starting scalajs-electron-quick-start...");
+    console.log("Starting scalajs-electron-demo...");
 
     // This method will be called when Electron has finished initialization and is ready to create browser windows.
-    electronApp onceReady createWindow
+    electronApp onceReady createWindow _
 
     process.platform.asInstanceOf[String] match {
       case "darwin" =>
