@@ -13,18 +13,17 @@ lazy val ElectronQuickStart = (project in file(".")).
     mainClass in Compile := Some("ElectronQuickStart.App"),
     persistLauncher in Compile := true,
     persistLauncher in Test := false,
+    artifactPath in (Compile, fastOptJS) :=
+      ((crossTarget in (Compile, fastOptJS)).value /
+          ((moduleName in (Compile, fastOptJS)).value + ".js")),
+    artifactPath in (Compile, fullOptJS) := (artifactPath in (Compile, fastOptJS)).value,
     packageScalaJSLauncher in Compile <<= Def.task {
       (mainClass in Compile).value map { mainCl =>
         val log = streams.value.log
         val file: sbt.File = (artifactPath in (Compile, packageScalaJSLauncher)).value
         val code = s"""'use strict';
-var appName = '${name.value}';
-try {
-  require('./' + appName + '-opt');
-}
-catch (e) {
-  require('./' + appName + '-fastopt');
-}
+require('./${name.value}-jsdeps');
+require('./${name.value}');
 ${mainCl}(__dirname, require).main();
 """
 
