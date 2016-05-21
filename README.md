@@ -29,10 +29,8 @@ npm install && npm start
 
 Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
 
-## Scala support
+## Scala.js notes
 
-The `main.js` in the documentation mostly translates to `App.scala` in this repository. There is a very small amount
-of glue in `entry.js` which is what Electron actually runs that simply loads and delegates to the compiled Scala.js
-code.
+The `main.js` in the documentation mostly translates to `App.scala` in this repository.
 
 #### License [MIT](LICENSE.md)
