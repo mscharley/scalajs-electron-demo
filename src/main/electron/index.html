@@ -7,7 +7,7 @@
     (function() {
       require('source-map-support').install();
 
-      var appName = 'scalajs-electron-quick-start';
+      var appName = process.env['npm_package_name'];
       try {
         require('./' + appName + '-opt');
       }
