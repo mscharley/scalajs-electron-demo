@@ -22,4 +22,8 @@ class Window(val require: Require = JSGlobal.require.asInstanceOf[Require])
   pong foreach { v =>
     JSGlobal.console.log(v)
   }
+
+  pong recover {
+    case e => JSGlobal.console.error(s"${e.getClass.getName}: ${e.getMessage}")
+  }
 }
