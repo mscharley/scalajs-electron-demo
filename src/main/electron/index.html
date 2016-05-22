@@ -5,12 +5,12 @@
     <title>Hello World!</title>
     <script>
     (function() {
-      window.onload = function() {
+      require('jquery')(function() {
         var appName = process.env['npm_package_name'];
         require('./' + appName + '-jsdeps');
         require('./' + appName);
         Demo.Window();
-      }
+      });
     })();
     </script>
   </head>

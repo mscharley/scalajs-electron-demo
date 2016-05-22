@@ -13,7 +13,7 @@ import scala.concurrent.Future
 class Window(val require: Require = JSGlobal.require.asInstanceOf[Require])
   extends RendererProcess(require)
 {
-  import scala.concurrent.ExecutionContext.Implicits.global
+  import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   val jQuery = require("jquery").asInstanceOf[org.scalajs.jquery.JQueryStatic]
 
   val api: ApiClient = new ApiClient(electron.ipcRenderer)
@@ -22,11 +22,4 @@ class Window(val require: Require = JSGlobal.require.asInstanceOf[Require])
   pong foreach { v =>
     JSGlobal.console.log(v)
   }
-
-  // global.console.log(electron.ipcRenderer.sendSync("synchronous-message", "ping")); // prints "pong"
-  //
-  // electron.ipcRenderer.on("asynchronous-reply") { (event: ipc.Event, arg: js.Any) =>
-  //   global.console.log(arg); // prints "pong"
-  // };
-  // electron.ipcRenderer.send("asynchronous-message", "ping");
 }

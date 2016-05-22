@@ -9,6 +9,7 @@ lazy val ElectronDemo = (project in file(".")).
     name := "scalajs-electron-demo",
     version := "1.0.0",
     scalaVersion := "2.11.8",
+    scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
 
     mainClass in Compile := Some("Demo.App"),
     persistLauncher in Compile := true,
