@@ -4,7 +4,7 @@
   "description": "A minimal Electron application with Scala.js support",
   "scripts": {
     "start": "rm -fv src/main/electron/${npm_package_name}* && sbt fullOptJS && cp -v target/scala-*/${npm_package_name}* src/main/electron/ && electron src/main/electron/${npm_package_name}-launcher.js",
-    "debug": "rm -fv src/main/electron/${npm_package_name}* && sbt clean fastOptJS && cp -v target/scala-*/${npm_package_name}* src/main/electron/ && electron src/main/electron/${npm_package_name}-launcher.js",
+    "debug": "rm -fv src/main/electron/${npm_package_name}* && sbt fastOptJS && cp -v target/scala-*/${npm_package_name}* src/main/electron/ && electron src/main/electron/${npm_package_name}-launcher.js",
     "test": "sbt test"
   },
   "repository": {

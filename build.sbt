@@ -43,7 +43,9 @@ ${mainCl}(__dirname, require).main();
       "org.scala-js"  %%% "scalajs-dom"      % "0.9.0",
       "be.doeraene"   %%% "scalajs-jquery"   % "0.9.0",
       "com.lihaoyi"   %%% "autowire"         % "0.2.5",
+      "com.lihaoyi"   %%% "upickle"          % "0.4.0",
       "com.mscharley" %%% "scalajs-electron" % "0.1.2",
       "com.mscharley" %%% "scalajs-nodejs"   % "0.1.1"
-    )
+    ),
+    dependencyUpdatesExclusions := moduleFilter(organization = "org.eclipse.jetty")
   )

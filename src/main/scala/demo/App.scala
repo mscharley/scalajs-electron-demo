@@ -8,21 +8,11 @@ import scala.scalajs.js.annotation.JSExport
 
 @JSExport("Demo.App")
 class App(dirName: String, require: Require) extends ElectronApp(require) with js.JSApp {
-  // global.console.log(electron.ipcMain.asInstanceOf[js.Any])
-  electron.ipcMain.on("asynchronous-message") { (event: ipc.Event, arg: js.Any) =>
-    global.console.log(arg);  // prints "ping"
-    event.sender.send("asynchronous-reply", "pong");
-  };
-
-  electron.ipcMain.on("synchronous-message") { (event: ipc.Event, arg: js.Any) =>
-    global.console.log(arg);  // prints "ping"
-    event.returnValue = "pong";
-  };
-
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
   var mainWindow: Option[BrowserWindow] = None
   val console = global.console
+  val api = new ApiServer(electron.ipcMain)
 
   def createWindow() = {
     // Create the browser window.
