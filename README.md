@@ -1,18 +1,16 @@
-# electron-quick-start (Scala.js port)
+# Scala.JS demo in Electron
 
-**Clone and run for a quick way to see an Electron in action.**
+**GitHub:** https://github.com/mscharley/scalajs-electron-demo  
+**Author:** Matthew Scharley  
+**Contributors:** [See contributors on GitHub][gh-contrib]  
+**Bugs/Support:** [Github Issues][gh-issues]  
+**Copyright:** 2016  
+**License:** [MIT license][license]
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
+## Synopsis
 
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
-
-A basic Electron application needs just these files:
-
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
-
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
+This is an in-depth demo of some features of Electron implemented using
+Scala.js. [For a more light-touch example see the electron-quick-start port.][quickstart]
 
 ## To use
 
@@ -20,17 +18,16 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/mscharley/scalajs-electron-quick-start
+git clone https://github.com/mscharley/scalajs-electron-demo
 # Go into the repository
-cd scalajs-electron-quick-start
+cd scalajs-electron-demo
 # Install dependencies and run the app
 npm install && npm start
 ```
 
 Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
 
-## Scala.js notes
-
-The `main.js` in the documentation mostly translates to `App.scala` in this repository.
-
-#### License [MIT](LICENSE.md)
+  [license]: https://raw.github.com/mscharley/scalajs-electron-demo/master/LICENSE
+  [gh-contrib]: https://github.com/mscharley/scalajs-electron-demo/graphs/contributors
+  [gh-issues]: https://github.com/mscharley/scalajs-electron-demo/issues
+  [quickstart]: https://github.com/mscharley/scalajs-electron-quick-start
