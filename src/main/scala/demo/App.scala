@@ -1,14 +1,23 @@
 package demo
 
+import nodejs.Require
 import electron._
-
 import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{global, literal => JsObject}
+import scala.scalajs.js.Dynamic.{global, literal => JSObject}
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport("Demo.App")
-class App(dirName: String, require: js.Function1[String, js.Any]) extends ElectronApp(require) with js.JSApp {
-  require("source-map-support").asInstanceOf[js.Dynamic].install();
+class App(dirName: String, require: Require) extends ElectronApp(require) with js.JSApp {
+  // global.console.log(electron.ipcMain.asInstanceOf[js.Any])
+  electron.ipcMain.on("asynchronous-message") { (event: ipc.Event, arg: js.Any) =>
+    global.console.log(arg);  // prints "ping"
+    event.sender.send("asynchronous-reply", "pong");
+  };
+
+  electron.ipcMain.on("synchronous-message") { (event: ipc.Event, arg: js.Any) =>
+    global.console.log(arg);  // prints "ping"
+    event.returnValue = "pong";
+  };
 
   // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
@@ -17,7 +26,7 @@ class App(dirName: String, require: js.Function1[String, js.Any]) extends Electr
 
   def createWindow() = {
     // Create the browser window.
-    mainWindow = Some(BrowserWindow(JsObject(width = 800, height = 600)))
+    mainWindow = Some(BrowserWindow(JSObject(width = 800, height = 600)))
     mainWindow foreach { window =>
       // and load the index.html of the app.
       window.loadURL("file://" + dirName + "/index.html")
@@ -34,7 +43,7 @@ class App(dirName: String, require: js.Function1[String, js.Any]) extends Electr
   }
 
   def main() = {
-    console.log("Starting scalajs-electron-demo...");
+    console.log("Starting scalajs-electron-demo...")
 
     // This method will be called when Electron has finished initialization and is ready to create browser windows.
     electronApp onceReady createWindow _
