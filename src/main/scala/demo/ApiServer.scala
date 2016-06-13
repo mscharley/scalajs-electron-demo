@@ -1,6 +1,5 @@
 package demo
 
-import autowire._
 import autowire.electronipc.ElectronIpcWireServer
 import nodejs.raw
 import upickle.{default => upickle}
