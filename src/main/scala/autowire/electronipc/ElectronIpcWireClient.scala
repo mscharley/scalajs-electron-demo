@@ -20,7 +20,7 @@ trait ElectronIpcWireClient[Reader[_], Writer[_]]
     val promise = Promise[String]()
     ipcRenderer.once(returnEvent) { (ev: ipc.Event, value: js.UndefOr[String]) =>
       value.toOption match {
-        case None => promise.failure(new IpcException(s"Failure recieved from the server while handling ${req.path.last}."))
+        case None => promise.failure(new IpcException(s"Failure received from the server while handling ${req.path.last}."))
         case Some(str) => promise.success(str)
       }
     }
