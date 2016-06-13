@@ -26,10 +26,10 @@ lazy val ElectronDemo = (project in file(".")).
 require("source-map-support").install();
 require('./${name.value}-jsdeps');
 require('./${name.value}');
-${mainCl}(__dirname, require).main();
+$mainCl(__dirname, require).main();
 """
 
-        log.info(s"Creating launcher ${file}")
+        log.info(s"Creating launcher $file")
         IO.write(file, code, Charset.forName("UTF-8"))
 
         // Attach the name of the main class used, (ab?)using the name key
@@ -41,10 +41,10 @@ ${mainCl}(__dirname, require).main();
 
     resolvers += Resolver.sonatypeRepo("public"),
     libraryDependencies ++= Seq(
-      "org.scala-js"  %%% "scalajs-dom"      % "0.9.0",
+      "org.scala-js"  %%% "scalajs-dom"      % "0.9.1",
       "be.doeraene"   %%% "scalajs-jquery"   % "0.9.0",
       "com.lihaoyi"   %%% "autowire"         % "0.2.5",
-      "com.lihaoyi"   %%% "upickle"          % "0.4.0",
+      "com.lihaoyi"   %%% "upickle"          % "0.4.1",
       "com.mscharley" %%% "scalajs-electron" % "0.1.2",
       "com.mscharley" %%% "scalajs-nodejs"   % "0.1.1"
     ),

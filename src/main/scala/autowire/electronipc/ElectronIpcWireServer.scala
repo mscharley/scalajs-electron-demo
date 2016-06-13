@@ -27,7 +27,7 @@ trait ElectronIpcWireServer[ApiType, Reader[_], Writer[_]]
       val reply = router.apply(request)
       reply.onFailure {
         case e =>
-        e.printStackTrace
+        e.printStackTrace()
         event.sender.send(returnPath)
       }
 
